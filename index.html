@@ -38,41 +38,178 @@
 
     <body>
 
-        <div class="reveal">
+    <div class="reveal">
 
-            <div class="slides">
+    <div class="slides">
 
-                <section data-background="img/rgba30.png" data-background-size="1000px">
-                    <h1>Rasterio</h1>
-                    <h3>Geospatial Raster Data Access for Programmers
-                    and Future Programmers</h3>
-                    <p>Sean Gillies @Mapbox</p>
-                    <p><small>SciPy 2014 &#8729; Austin &#8729; July 9</small></p>
-                </section>
+    <section
+      data-background="img/rgba30.png" 
+      data-background-size="1000px">
 
-                <section>
-                    <h2>What I'm Going to Tell You</h2>
-                </section>
+        <h1>Rasterio</h1>
+        <h3>Geospatial Raster Data Access for Programmers
+        and Future Programmers</h3>
+        <p>Sean Gillies @Mapbox</p>
+        <p><small>SciPy 2014 &#8729; Austin &#8729; July 9</small></p>
 
-                <section>
-                    <h2>What I Told You</h2>
-                </section>
+    </section>
 
-                <section>
-                    <h2>Credits</h2>
-                </section>
+    <section>
+    <h2>Me, Mapbox, Satellites</h2>
+    
+    <notes>
+    My name is Sean Gillies, I work at Mapbox. 
+    I've I've been a Python programmer since
+    2001. 
+    </notes>
+    </section>
 
-                <section>
-                    <h2>Thank You</h2>
-                </section>
+    <section>
+    <!-- What I'm going to tell you -->
+    <h2>Programming with Raster data</h2>
+    <ul>
+      <li>What's the Mapbox Satellite team up to?</li>
+      <li>Why Linux, GDAL, and SciPy?</li>
+      <li>Why a new Python geospatial data library?</li>
+      <li>How do you get, install, and use Rasterio?</li>
+    </ul>
 
-                <section>
-                    <h2>THE END</h2>
-                </section>
+    <!--notes>
+    Motivation: We (Mapbox) are processing georeferenced raster data at scale.
+    Constraints: short time frame, small team. Open source software fits the bill:
+    Linux and GDAL. We're also inventing new methods and writing new software.
+    Same constraints. We want to write the least amount of code possible and
+    deploy as quickly as possible. This rules out C/C++ and Java. 
 
-            </div>
+    Our choice: SciPy, Numpy.
 
-        </div>
+    High-level features. Tons of algorithms.
+
+    When we do need to optimize: Cython. Cython lets us write extension modules
+    rapidly and gives us Python 2 and 3 compatibility almost for free.
+
+    </notes-->
+    </section>
+
+    <!-- Cloudless Gibralter -->
+    <section
+      data-background="img/8871945777_603bfd7d9f_b.jpg"
+      data-background-size="1024px">
+    <h2>Mapbox Cloudless Atlas</h2>
+
+    <!--notes>
+    Cloudless Landsat mosaic of the world.
+    </notes-->
+    </section>
+
+    <!-- Scene sources -->
+    <section
+      data-background="img/8871364724_5d48143feb_o.jpg"
+      data-background-size="1024px">
+    <h2>Landsat Sources</h2>
+    
+    <!--notes>
+    Cloudless scenes are rare and stitching cloudless regions together is expensive.
+    </notes-->
+    
+    </section>
+
+    <!-- Scene sources -->
+    <section>
+    <h2>The Process</h2>
+    <ul>
+      <li>Scene selection (season and minimal cloudiness)</li>
+      <li>Atmospheric correction</li>
+      <li>Reflectance normalization</li>
+      <li>Minimal operator intervention</li>
+      <li class="fragment">No cutlines</li>
+      <li class="fragment">Pixel by pixel</li>
+    </ul>
+
+    <!--notes>
+    Cloudless scenes are rare and stitching cloudless regions together is expensive.
+    </notes-->
+    
+    </section>
+
+    <!-- good pixels sorted up -->
+    <section
+      data-background="img/8870292339_517612af6d_k.jpg"
+      data-background-size="1024px"
+      data-background-position="top">
+    <h2>"Best" pixels</h2>
+    </section>
+
+    <!-- bad pixels sorted down -->
+    <section
+      data-background="img/8870292339_517612af6d_k.jpg"
+      data-background-size="1024px"
+      data-background-position="bottom">
+    <h2>"Worst" pixels</h2>
+    </section>
+
+    <section>
+    <h2>Earth is a cloudy planet</h2>
+    <ul>
+      <li>50-70% mean cloud cover over land</li>
+      <li>Landsat 8 doesn't yet have cloud-free imagery everywhere</li>
+      <li class="fragment">So we also use Landsat 7</li>
+    </ul>
+
+    </section>
+
+    <section
+      data-background="img/8871307188_29f0c482f6_b.jpg"
+      data-background-size="1024px">
+    <h2>Scan Line Corrector Failure</h2>
+    
+    </section>
+
+    <section>
+    <h2>Landsat SLC-Off Imagery</h2>
+    <ul>
+      <li>Since May 2013</li>
+      <li>We can't get enough cloudless pixels without using it</li>
+      <li class="fragment">It complicates things</li>
+      <li class="fragment">A lot</li>
+    </ul>
+    </section>
+
+    <section
+      data-background="img/8871945763_17ff3e37f4_b.jpg"
+      data-background-size="1024px">
+    <h2>Stripes</h2>
+    
+    </section>
+
+
+    <section>
+    <h2>Why good Python programming matters</h2>
+    </section>
+
+    <section>
+        <h2>What I Told You</h2>
+    </section>
+
+    <section>
+        <h2>Credits</h2>
+    </section>
+
+    <section>
+        <h2>Thank You</h2>
+    </section>
+
+    <section>
+        <h2>THE END</h2>
+    </section>
+
+    <!-- end slides -->
+    </div>
+
+    <!-- end reveal container -->
+    </div>
+
+    <!-- Scripts below -->
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.min.js"></script>
