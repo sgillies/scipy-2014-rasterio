@@ -178,10 +178,29 @@
     <section
       data-background="img/8871945763_17ff3e37f4_b.jpg"
       data-background-size="1024px">
-    <h2>Stripes</h2>
+    <h2>Bands</h2>
     
     </section>
 
+    <section>
+    <h2>Debanding (1)</h2>
+    <ul>
+      <li>Transform the image using a Fast Fourier Transform</li>
+      <li>Locate the artifact peaks</li>
+      <li>Remove the artifacts</li>
+      <li>Transform the image back using an inverse transform</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Debanding (2)</h2>
+    <ul>
+      <li>Uses numpy.fft, scikit-image, etc.</li>
+      <li>And orbital information</li>
+      <li>Multiple iterations needed to prevent addition of image bugs</li>
+      <li>Details: <a href="https://www.mapbox.com/blog/debanding-the-world/">https://www.mapbox.com/blog/debanding-the-world/</a></li>
+    </ul>
+    </section>
 
     <section>
     <h2>Why good Python programming matters</h2>
