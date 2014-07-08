@@ -52,29 +52,37 @@
         <p>Sean Gillies @Mapbox</p>
         <p><small>SciPy 2014 &#8729; Austin &#8729; July 9</small></p>
 
-    </section>
+    <aside class="notes">
+    Hi! Good morning! Thank you very much for coming to this sessiom. My name
+    is Sean Gillies, I work at Mapbox. 
+    I've been a Python programmer since 2001 and a GIS analyst and programmer
+    since 1999, with a séjour in the digital classics from 2006 to 2013.
+    This is my first SciPy and I'm super happy to be here. 
+    </aside>
 
-    <section>
-    <h2>Me, Mapbox, Satellites</h2>
-    
-    <notes>
-    My name is Sean Gillies, I work at Mapbox. 
-    I've I've been a Python programmer since
-    2001. 
-    </notes>
     </section>
 
     <section>
     <!-- What I'm going to tell you -->
     <h2>Programming with Raster data</h2>
     <ul>
-      <li>What's the Mapbox Satellite team up to?</li>
-      <li>Why Linux, GDAL, and SciPy?</li>
-      <li>Why a new Python geospatial data library?</li>
-      <li>How do you get, install, and use Rasterio?</li>
+      <li class="fragment">What's the Mapbox Satellite team up to?</li>
+      <li class="fragment">Why Linux, GDAL, and SciPy?</li>
+      <li class="fragment">Why a new Python geospatial data library?</li>
+      <li class="fragment">How do you get, install, and use Rasterio?</li>
     </ul>
 
-    <!--notes>
+    <aside class="notes">
+    My talk is organized around four questions.
+
+    What's the context?
+
+    Why did we choose these tools?
+
+    Why are we writing new geodata access libraries?
+
+    How do you use it yourselves?
+
     Motivation: We (Mapbox) are processing georeferenced raster data at scale.
     Constraints: short time frame, small team. Open source software fits the bill:
     Linux and GDAL. We're also inventing new methods and writing new software.
@@ -88,7 +96,7 @@
     When we do need to optimize: Cython. Cython lets us write extension modules
     rapidly and gives us Python 2 and 3 compatibility almost for free.
 
-    </notes-->
+    </aside>
     </section>
 
     <!-- Cloudless Gibralter -->
@@ -97,9 +105,11 @@
       data-background-size="1024px">
     <h2>Mapbox Cloudless Atlas</h2>
 
-    <!--notes>
-    Cloudless Landsat mosaic of the world.
-    </notes-->
+    <aside class="notes">
+    The Mapbox Satellite Team is making a Cloudless Landsat mosaic of the world.
+
+    This is the project that drives a lot of Rasterio development.
+    </aside>
     </section>
 
     <!-- Scene sources -->
