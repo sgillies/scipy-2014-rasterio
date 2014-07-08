@@ -176,13 +176,19 @@
       data-background="img/8871307188_29f0c482f6_b.jpg"
       data-background-size="1024px">
     <h2>Scan Line Corrector Failure</h2>
-    
+
+    <aside class="notes">
+    Landsat 7's scan line corrector, which accounts for the forward motion of 
+    the satellite as it scans, failed permanently on May 31, 2003. Imagery acquired
+    after this time has zig-zaging lines which both overlap and miss portions of the 
+    landscape.
+    </aside>
     </section>
 
     <section>
     <h2>Landsat SLC-Off Imagery</h2>
     <ul>
-      <li>Since May 2013</li>
+      <li>Since May 2003</li>
       <li>We can't get enough cloudless pixels without using it</li>
       <li class="fragment">It complicates things</li>
       <li class="fragment">A lot</li>
@@ -199,11 +205,18 @@
     <section>
     <h2>Debanding (1)</h2>
     <ul>
-      <li>Transform the image using a Fast Fourier Transform</li>
-      <li>Locate the artifact peaks</li>
-      <li>Remove the artifacts</li>
-      <li>Transform the image back using an inverse transform</li>
+      <li class="fragment">Transform the image using a Fast Fourier Transform</li>
+      <li class="fragment">Locate the artifact peaks</li>
+      <li class="fragment">Remove the artifacts</li>
+      <li class="fragment">Transform the image back using an inverse transform</li>
     </ul>
+
+    <aside class="notes">
+    This is our approach to the debanding problem.
+
+    Locating the artifact peaks is quite difficult in practice when there are 
+    multiple SLC-off images going in to our product.
+    </aside>
     </section>
 
     <section>
@@ -214,6 +227,11 @@
       <li>Multiple iterations needed to prevent addition of image bugs</li>
       <li>Details: <a href="https://www.mapbox.com/blog/debanding-the-world/">https://www.mapbox.com/blog/debanding-the-world/</a></li>
     </ul>
+
+    <aside class="notes">
+    Modeling the orientation of SLC-off bands lets us focus on just those particular
+    peaks.
+    </aside>
     </section>
 
     <section>
