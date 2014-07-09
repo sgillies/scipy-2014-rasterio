@@ -69,7 +69,7 @@
       <li class="fragment">What's the Mapbox Satellite team up to?</li>
       <li class="fragment">Why Linux, GDAL, and SciPy?</li>
       <li class="fragment">Why a new Python geospatial data library?</li>
-      <li class="fragment">How do you get, install, and use Rasterio?</li>
+      <li class="fragment">What is Rasterio and how do you use it?</li>
     </ul>
 
     <aside class="notes">
@@ -89,7 +89,6 @@
     <section
       data-background="img/8871945777_603bfd7d9f_b.jpg"
       data-background-size="1024px">
-    <h1>This</h1>
     <h2>Mapbox Cloudless Atlas</h2>
 
     <aside class="notes">
@@ -110,7 +109,7 @@
     <section
       data-background="img/8871364724_5d48143feb_o.jpg"
       data-background-size="1024px">
-    <h1>From This</h1>
+    <h2>From cloudy scenes</h2>
     
     </section>
 
@@ -118,7 +117,7 @@
     <section>
     <h2>Declouding</h2>
     <ul>
-      <li>Scene selection (season and minimal cloudiness)</li>
+      <li>Scene selection (season and cloudiness)</li>
       <li>Atmospheric correction and reflectance normalization</li>
       <li>Score every pixel of every source image</li>
       <li class="fragment">No cutlines</li>
@@ -177,7 +176,7 @@
 
 
     <section>
-    <h2>Scan Line Corrector Failure</h2>
+    <h2>Scan Line Correction</h2>
     <img src="img/products_slc_graphic_s.jpg" width="200%">
     
     <aside class="notes">
@@ -318,7 +317,7 @@
     <ol>
       <li>Read/write ndarrays from/to data files</li>
       <li>Python types, protocols and idioms instead of C/C++ ones</li>
-      <li>Free the programmer from having to think about C/C++ (memory management, pointers, &c)</li>
+      <li>Free programmers from having to think about C/C++ (memory management, pointers, &c)</li>
     </ol>
     </section>
 
@@ -327,6 +326,7 @@
     <ul>
       <li>A Python package at the top</li>
       <li>Extension modules (using Cython) in the middle</li>
+      <li>Fast loops, typed memoryviews, "nogil" blocks</li>
       <li>GDAL shared library on the bottom</li>
     </ul>
 
@@ -400,7 +400,7 @@ with rasterio.open(path, 'w', **kwargs) as dst:
     <section>
     <img src="img/py-powered.png">
     <pre><code data-trim>
-({'coordinates': [[(71.0, 6.0), ...]], 'type': 'Polygon'}, 253), ...
+{'coordinates': [[(71.0, 6.0), ...]], 'type': 'Polygon'}, ...
     </code></pre>
     <img src="img/py-powered-rev.png">
     </section>
@@ -418,7 +418,7 @@ with rasterio.open(path, 'w', **kwargs) as dst:
     <ul>
       <li class="fragment">The Mapbox Satellite team has interesting problems</li>
       <li class="fragment">Linux, Python, Numpy, Scipy, GDAL, and Rasterio are big parts of the solutions</li>
-      <li class="fragment">Rasterio aims to make GIS features more accessible to Python programmers</li>
+      <li class="fragment">Rasterio aims to make GIS data more accessible to Python programmers</li>
       <li class="fragment">And help GIS analysts learn important Python protocols and idioms</li>
     </ul>
 
