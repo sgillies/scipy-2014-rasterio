@@ -2,11 +2,12 @@
 Rasterio: Geospatial Raster Data Access for Programmers and Future Programmers
 ==============================================================================
 
-Talk for SciPy 2014
+Talk for SciPy 2014.
 
-Format 25 mins + 5 for questions.
+Format: 20 mins + 5 for questions.
 
-So, about 25 slides.
+There are notes inline. I intend to format them better and incorporate
+audience questions and feedback.
 
 # Description
 
