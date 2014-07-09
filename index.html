@@ -111,6 +111,15 @@
       data-background-size="1024px">
     <h2>From cloudy scenes</h2>
     
+    <aside class="notes">
+    We're making the cloudless atlas from generally cloudy scenes.
+
+    The first technical problem is getting the clouds out. 
+
+    Everywhere.
+
+    With minimal operator intervention.
+
     </section>
 
     <!-- Scene sources -->
@@ -125,13 +134,16 @@
     </ul>
 
     <aside class="notes">
-    The first technical problem is getting the clouds out. 
+    Cutlines and other spatial interventions don't scale well.
 
-    Everywhere.
+    Cloudless Atlas needs to scale, because we want to run it almost
+    continually as new data comes in.
 
-    With minimal operator intervention.
+    Pixel by pixel approaches scale trivially.
 
-    Because cutlines are expensive.
+    They worked very well for MODIS imagery. They won't work for very high
+    resolution imagery? Will they work for Landsat? At the outset we weren't
+    sure.
     </aside>
     </section>
 
@@ -143,7 +155,12 @@
     <h2>High scoring pixels</h2>
 
     <aside class="notes">
-    These are the "best" (darkest in this case) pixels of all Landsat scenes.
+    This is our approach right now: score every pixel and sort the best
+    ones to the top. The cloudless atlas tiles are formed from the best
+    pixels.
+
+    Shown here are the "best" by some measure (darkest in this case) pixels
+    of all the Landsat scenes shown in the previous slide.
     </aside>
     </section>
 
@@ -156,6 +173,10 @@
 
     <aside class="notes">
     These are the worst (brightest) pixels.
+
+    Sorting is fairly cheap (no worse than NlogN - N being the number of
+    input scenes), so this is going to scale
+    reasonably well.
     </aside>
     </section>
 
@@ -170,10 +191,8 @@
     <aside class="notes">
     This is the lead in to our second technical problem. We have to use
     Landsat 7 because we don't yet have enough L8 coverage to make a 
-    global cloudless mosaic.
+    global cloudless mosaic. And Landsat 7 has some problems.
     </section>
-
-
 
     <section>
     <h2>Scan Line Correction</h2>
@@ -182,8 +201,8 @@
     <aside class="notes">
     Landsat 7's scan line corrector, which accounts for the forward motion of 
     the satellite as it scans, failed permanently on May 31, 2003. Imagery 
-    acquired after this time has zig-zaging lines which both overlap and miss portions of the 
-    landscape.
+    acquired after this time has zig-zaging lines which both overlap and miss
+    portions of the landscape.
     </aside>
     </section>
 
@@ -194,7 +213,7 @@
     <aside class="notes">
     SLC-Off imagery has characteristic no-data strips, increasing in 
     breadth toward the edges
-    of the scene.
+    of the scene. Middles of the scenes can have full coverage.
     </aside>
     </section>
 
@@ -221,9 +240,13 @@
     <h2>Bands</h2>
     
     <aside class="notes">
-    Instead of nodata bands we have bands of temporal inconsistency. It can
-    be
-    especially noticeable in agricultural regions.
+    Instead of nodata bands we have bands of seasonal or interannual 
+    incongruity. 
+    
+    It can be
+    especially noticeable in agricultural regions: manifesting as
+    alternating strips of vigorous and non-vigorous vegetation (or bare
+    ground).
     </section>
 
     <section>
@@ -240,6 +263,8 @@
 
     Locating the artifact peaks is quite difficult in practice when there are 
     multiple SLC-off images going in to our product.
+
+    Modeling the orientation of the SLC-off gaps helps a lot.
     </aside>
     </section>
 
@@ -266,17 +291,23 @@
     </ul>
 
     <aside class="notes">
-    Trial and error isn't our only method, but it's an important one.
+    Trial and error isn't our only method, but it's an important one. It
+    has a big impact on our requirements.
     </aside>
     </section>
 
     <section>
-    <h2>Software Requirements</h2>
+    <h2>Cloudless Atlas Software Requirements</h2>
     <ol>
       <li class="fragment">Rapid prototyping and iteration</li>
       <li class="fragment">Proven algorithms and drivers</li>
       <li class="fragment">Ability to deploy to 100s of servers</li>
     </ol>
+
+    <aside class="notes">
+    We need to get new iterations of our algorithms into production
+    quickly. We need robust numerical libraries. And we need to distribute
+    the work across many servers. And also know the cost of doing it.
     </section>
 
     <section>
@@ -432,6 +463,11 @@ with rasterio.open(path, 'w', **kwargs) as dst:
       data-background-size="1000px">
     <h1>Rasterio</h1>
     <a href="https://github.com/mapbox/rasterio">https://github.com/mapbox/rasterio</a>
+    </section>
+
+    <section>
+    <h2>Debanding Blog Post</h2>
+    <a href="https://www.mapbox.com/blog/debanding-the-world/">https://www.mapbox.com/blog/debanding-the-world/</a> by Amit Kapadia
     </section>
 
     <section
